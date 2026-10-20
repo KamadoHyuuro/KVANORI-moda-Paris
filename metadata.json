@@ -1,0 +1,8 @@
+{
+  "name": "KVANORI — Moda Vintage",
+  "description": "KVANORI · Boutique de moda feminina inspirada na alfaiataria clássica, estética vintage e silhuetas atemporais.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Peça de vestuário ou acessório do catálogo Rive Gauche",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "slug": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 3000 },
+        "price": { "type": "number" },
+        "category": { "type": "string", "maxLength": 100 },
+        "collection": { "type": "string", "maxLength": 100 },
+        "sizes": { "type": "array" },
+        "colors": { "type": "array" },
+        "images": { "type": "array" },
+        "stock": { "type": "number" },
+        "featured": { "type": "boolean" },
+        "newArrival": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "slug", "description", "price", "category", "collection", "sizes", "colors", "images", "stock", "featured", "newArrival", "createdAt"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Categoria de produtos da marca",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "slug": { "type": "string", "maxLength": 100 },
+        "image": { "type": "string", "maxLength": 1000 }
+      },
+      "required": ["id", "name", "slug", "image"]
+    },
+    "Collection": {
+      "title": "Collection",
+      "description": "Coleção temática ou sazonal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "image": { "type": "string", "maxLength": 1000 },
+        "active": { "type": "boolean" }
+      },
+      "required": ["id", "name", "description", "image", "active"]
+    },
+    "User": {
+      "title": "User",
+      "description": "Perfil de usuário da loja com controle de acesso baseado em papéis",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "email": { "type": "string", "maxLength": 200 },
+        "role": { "type": "string", "enum": ["cliente", "administrador", "admin"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "email", "role", "createdAt"]
+    },
+    "Banner": {
+      "title": "Banner",
+      "description": "Banners promocionais e editoriais da página inicial",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "subtitle": { "type": "string", "maxLength": 300 },
+        "kicker": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "image": { "type": "string", "maxLength": 1000 },
+        "buttonText": { "type": "string", "maxLength": 100 },
+        "link": { "type": "string", "maxLength": 200 },
+        "active": { "type": "boolean" },
+        "order": { "type": "number" }
+      },
+      "required": ["id", "title", "subtitle", "image", "buttonText", "link", "active"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Pedido de compra realizado pelo cliente",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "shipping": { "type": "number" },
+        "total": { "type": "number" },
+        "status": { "type": "string", "enum": ["pendente", "em_processamento", "enviado", "entregue", "cancelado"] },
+        "paymentStatus": { "type": "string", "enum": ["pendente", "aprovado", "recusado"] },
+        "shippingAddress": { "type": "object" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "items", "subtotal", "shipping", "total", "status", "paymentStatus", "shippingAddress", "createdAt"]
+    },
+    "Cart": {
+      "title": "Cart",
+      "description": "Carrinho de compras do cliente sincronizado",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "items": { "type": "array" }
+      },
+      "required": ["id", "userId", "items"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Catálogo de produtos Rive Gauche com leitura pública e escrita restrita aos administradores"
+    },
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Categorias de produtos da loja"
+    },
+    "/collections/{collectionId}": {
+      "schema": "Collection",
+      "description": "Coleções editoriais da marca"
+    },
+    "/banners/{bannerId}": {
+      "schema": "Banner",
+      "description": "Banners gerenciáveis da página inicial"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Perfis de usuários com controle estrito para impedir autoatribuição de privilégios de administrador"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Pedidos dos clientes protegidos contra adulteração de preços ou status por clientes"
+    },
+    "/carts/{userId}": {
+      "schema": "Cart",
+      "description": "Carrinho de compras persistente associado ao ID do usuário autenticado"
+    }
+  }
+}

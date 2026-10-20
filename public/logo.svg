@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%" fill="none">
+  <!-- KVANORI Official Brand Logo - Moda Vintage -->
+  <g fill="#36190D" color="#36190D">
+    
+    <!-- 4-Point Celestial Sparkle Star -->
+    <path 
+      d="M 200 22 C 201 44 212 55 234 57 C 212 59 201 70 200 92 C 199 70 188 59 166 57 C 188 55 199 44 200 22 Z" 
+      fill="currentColor"
+    />
+
+    <!-- Main Wordmark: KVANORI -->
+    <g transform="translate(200, 142)" text-anchor="middle">
+      <text 
+        x="0" 
+        y="0" 
+        font-family="'Playfair Display', 'Bodoni Moda', 'Didot', 'Cinzel', 'Cormorant Garamond', 'Georgia', serif" 
+        font-size="64" 
+        font-weight="700" 
+        letter-spacing="0.04em" 
+        fill="currentColor"
+      >
+        KVANORI
+      </text>
+
+      <!-- Signature elegant accent underline -->
+      <path 
+        d="M -110 3 C -70 8 0 8 110 3 C 30 7 -40 7 -105 2 Z" 
+        fill="currentColor"
+        opacity="0.85"
+      />
+    </g>
+
+    <!-- Subtitle: — MODA VINTAGE — -->
+    <g transform="translate(200, 185)" text-anchor="middle">
+      <line x1="-128" y1="-4" x2="-72" y2="-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+      <text 
+        x="0" 
+        y="0" 
+        font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+        font-size="12" 
+        font-weight="600" 
+        letter-spacing="0.32em" 
+        fill="currentColor"
+      >
+        MODA VINTAGE
+      </text>
+      <line x1="72" y1="-4" x2="128" y2="-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+    </g>
+    
+  </g>
+</svg>
